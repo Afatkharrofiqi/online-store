@@ -4,8 +4,9 @@ import { AppService } from './app.service';
 import { ProductController } from './product/product.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsService } from './product/product.service';
-import { Product } from './product/models/product.entity';
+import { Product } from './models/product.entity';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { AdminModule } from './admin/admin.module';
       synchronize: true
     }),
     TypeOrmModule.forFeature([Product]),
-    AdminModule
+    AdminModule,
+    AuthModule
   ],
   controllers: [AppController, ProductController],
   providers: [AppService, ProductsService],

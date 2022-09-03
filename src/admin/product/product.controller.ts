@@ -1,6 +1,6 @@
 import { Controller, Get, Render, Post, Redirect, Body, UseInterceptors, UploadedFile, Param } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Product } from '../../product/models/product.entity';
+import { Product } from '../../models/product.entity';
 import { ProductsService } from '../../product/product.service';
 
 @Controller('/admin/products')

@@ -1,6 +1,6 @@
 import { Controller, Get, Render, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { Product } from './models/product.entity';
+import { Product } from '../models/product.entity';
 import { ProductsService } from './product.service';
 
 @Controller('products')
