@@ -11,5 +11,7 @@
     "**/.settings": true,
     "**/.factorypath": true,
     "**/node_modules": true
-  }
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true
 }
