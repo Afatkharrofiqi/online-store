@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Item } from './item.entity';
 @Entity()
 export class Product {
   @PrimaryGeneratedColumn()
@@ -16,6 +16,9 @@ export class Product {
 
   @Column()
   price: number;
+
+  @OneToMany(() => Item, (item) => item.product)
+  items: Item[];
 
   setId(id: number) {
     this.id = id;
