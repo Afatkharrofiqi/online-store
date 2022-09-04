@@ -1,8 +1,8 @@
-import { User } from 'src/models/user.entity';
+
+import { User } from '@model/user.entity';
 import validator from 'validator';
 
 export class UserValidator {
-
   static validate(body: User, toValidate: string[]) {
     const errors: string[] = [];
 
@@ -14,10 +14,7 @@ export class UserValidator {
       errors.push('Invalid Email format');
     }
 
-    if (
-      toValidate.includes('password') &&
-      validator.isEmpty(body.password)
-    ) {
+    if (toValidate.includes('password') && validator.isEmpty(body.password)) {
       errors.push('Password cannot be empty');
     }
 

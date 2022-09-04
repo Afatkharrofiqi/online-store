@@ -1,21 +1,28 @@
 import {
-  Controller, Get, Render, Req, Redirect, Param,
-  Body, Post, Res
+  Controller,
+  Get,
+  Render,
+  Req,
+  Redirect,
+  Param,
+  Body,
+  Post,
+  Res,
 } from '@nestjs/common';
 import { ProductsService } from '../product/product.service';
-import { Product } from '../models/product.entity';
 import { UsersService } from '../user/user.service';
 import { OrdersService } from '../order/order.service';
-import { Item } from '../models/item.entity';
-import { Order } from '../models/order.entity';
 import { Response } from 'express';
+import { Product } from '@model/product.entity';
+import { Item } from '@model/item.entity';
+import { Order } from '@model/order.entity';
 
 @Controller('/cart')
 export class CartController {
   constructor(
     private readonly productsService: ProductsService,
     private readonly usersService: UsersService,
-    private readonly ordersService: OrdersService
+    private readonly ordersService: OrdersService,
   ) { }
 
   @Get('/')

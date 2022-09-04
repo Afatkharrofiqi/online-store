@@ -26,7 +26,7 @@ export class Product {
 
   getId(): number {
     return this.id;
-  };
+  }
 
   setName(name: string) {
     this.name = name;
@@ -34,7 +34,7 @@ export class Product {
 
   getName(): string {
     return this.name;
-  };
+  }
 
   setDescription(description: string) {
     this.description = description;
@@ -42,7 +42,7 @@ export class Product {
 
   getDescription(): string {
     return this.description;
-  };
+  }
 
   setImage(image: string) {
     this.image = image;
@@ -50,7 +50,7 @@ export class Product {
 
   getImage(): string {
     return this.image;
-  };
+  }
 
   setPrice(price: number) {
     this.price = price;
@@ -58,7 +58,7 @@ export class Product {
 
   getPrice(): number {
     return this.price;
-  };
+  }
 
   static sumPricesByQuantities(products: Product[], productsInSession): number {
     let total = 0;

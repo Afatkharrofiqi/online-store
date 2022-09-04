@@ -1,8 +1,17 @@
-import { Controller, Get, Render, Post, Redirect, Body, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Render,
+  Post,
+  Redirect,
+  Body,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { Response } from 'express';
-import { User } from '../models/user.entity';
 import { UsersService } from '../user/user.service';
-import { UserValidator } from '../validator/user.validator';
+import { UserValidator } from '../../validator/user.validator';
+import { User } from '@model/user.entity';
 
 @Controller('/auth')
 export class AuthController {
@@ -20,7 +29,11 @@ export class AuthController {
   }
 
   @Post('/store')
-  async store(@Body() body: User, @Req() request: any, @Res() response: Response) {
+  async store(
+    @Body() body: User,
+    @Req() request: any,
+    @Res() response: Response,
+  ) {
     const toValidate: string[] = ['name', 'email', 'password'];
     const errors: string[] = UserValidator.validate(body, toValidate);
     if (errors.length > 0) {
@@ -49,7 +62,11 @@ export class AuthController {
   }
 
   @Post('/connect')
-  async connect(@Body() body: User, @Req() request: any, @Res() response: Response) {
+  async connect(
+    @Body() body: User,
+    @Req() request: any,
+    @Res() response: Response,
+  ) {
     const email = body.email;
     const pass = body.password;
     const user = await this.usersService.login(email, pass);

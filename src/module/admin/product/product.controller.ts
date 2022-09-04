@@ -1,10 +1,22 @@
-import { Controller, Get, Render, Post, Redirect, Body, UseInterceptors, UploadedFile, Param, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Render,
+  Post,
+  Redirect,
+  Body,
+  UseInterceptors,
+  UploadedFile,
+  Param,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Product } from '../../models/product.entity';
 import { ProductsService } from '../../product/product.service';
-import { ProductValidator } from '../../validator/product.validator';
+import { ProductValidator } from '../../../validator/product.validator';
 import * as fs from 'fs';
 import { Response } from 'express';
+import { Product } from '@model/product.entity';
 
 @Controller('/admin/products')
 export class ProductsController {
@@ -24,8 +36,17 @@ export class ProductsController {
   @Post('/store')
   @UseInterceptors(FileInterceptor('image', { dest: './public/uploads' }))
   @Redirect('/admin/products')
-  async store(@Body() body: Product, @UploadedFile() file: Express.Multer.File, @Req() request) {
-    const toValidate: string[] = ['name', 'description', 'price', 'imageCreate'];
+  async store(
+    @Body() body: Product,
+    @UploadedFile() file: Express.Multer.File,
+    @Req() request,
+  ) {
+    const toValidate: string[] = [
+      'name',
+      'description',
+      'price',
+      'imageCreate',
+    ];
     const errors: string[] = ProductValidator.validate(body, file, toValidate);
     if (errors.length > 0) {
       if (file) {
@@ -66,9 +87,14 @@ export class ProductsController {
     @UploadedFile() file: Express.Multer.File,
     @Param('id') id: number,
     @Res() response: Response,
-    @Req() request: any
+    @Req() request: any,
   ) {
-    const toValidate: string[] = ['name', 'description', 'price', 'imageCreate'];
+    const toValidate: string[] = [
+      'name',
+      'description',
+      'price',
+      'imageCreate',
+    ];
     const errors: string[] = ProductValidator.validate(body, file, toValidate);
     if (errors.length > 0) {
       if (file) {

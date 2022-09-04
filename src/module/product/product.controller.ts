@@ -1,6 +1,7 @@
+
+import { Product } from '@model/product.entity';
 import { Controller, Get, Render, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { Product } from '../models/product.entity';
 import { ProductsService } from './product.service';
 
 @Controller('products')
@@ -15,8 +16,8 @@ export class ProductController {
     viewData['subtitle'] = 'List of Products';
     viewData['products'] = await this.productsService.findAll();
     return {
-      viewData
-    }
+      viewData,
+    };
   }
 
   @Get('/:id')

@@ -3,7 +3,7 @@ import { OrdersService } from '../order/order.service';
 
 @Controller('/account')
 export class AccountController {
-  constructor(private readonly ordersService: OrdersService) { }
+  constructor(private readonly ordersService: OrdersService) {}
 
   @Get('/orders')
   @Render('account/orders')

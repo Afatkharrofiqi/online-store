@@ -1,6 +1,10 @@
 import {
-  Entity, Column, PrimaryGeneratedColumn, ManyToOne,
-  OneToMany, CreateDateColumn
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+  CreateDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Item } from './item.entity';
@@ -20,7 +24,7 @@ export class Order {
   user: User;
 
   @OneToMany(() => Item, (item) => item.order, {
-    cascade: ['insert']
+    cascade: ['insert'],
   })
   items: Item[];
 

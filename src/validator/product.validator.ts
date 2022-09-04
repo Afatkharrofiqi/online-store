@@ -1,8 +1,8 @@
+
+import { Product } from '@model/product.entity';
 import validator from 'validator';
-import { Product } from '../models/product.entity';
 
 export class ProductValidator {
-
   static imageWhiteList: string[] = [
     'image/png',
     'image/jpeg',
@@ -10,7 +10,11 @@ export class ProductValidator {
     'image/webp',
   ];
 
-  static validate(body: Product, file: Express.Multer.File, toValidate: string[]) {
+  static validate(
+    body: Product,
+    file: Express.Multer.File,
+    toValidate: string[],
+  ) {
     const errors: string[] = [];
 
     if (toValidate.includes('name') && validator.isEmpty(body.name)) {

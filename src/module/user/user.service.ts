@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '../models/user.entity';
 import * as bcrypt from 'bcrypt';
+import { User } from '@model/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -31,8 +31,8 @@ export class UsersService {
   findOne(id: number): Promise<User> {
     return this.usersRepository.findOne({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
   }
 
