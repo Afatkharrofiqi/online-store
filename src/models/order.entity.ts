@@ -19,7 +19,9 @@ export class Order {
   @ManyToOne(() => User, (user) => user.orders)
   user: User;
 
-  @OneToMany(() => Item, (item) => item.order)
+  @OneToMany(() => Item, (item) => item.order, {
+    cascade: ['insert']
+  })
   items: Item[];
 
   getId(): number {
@@ -38,8 +40,8 @@ export class Order {
     this.total = total;
   }
 
-  getDate(): Date {
-    return this.date;
+  getDate(): string {
+    return this.date.toISOString().split('T')[0];
   }
 
   setDate(date: Date) {
