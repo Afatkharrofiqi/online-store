@@ -7,6 +7,7 @@ import { ProductsService } from './product/product.service';
 import { Product } from './models/product.entity';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { AuthModule } from './auth/auth.module';
     }),
     TypeOrmModule.forFeature([Product]),
     AdminModule,
-    AuthModule
+    AuthModule,
+    CartModule
   ],
   controllers: [AppController, ProductController],
   providers: [AppService, ProductsService],

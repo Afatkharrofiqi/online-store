@@ -15,7 +15,7 @@ export class Product {
   image: string;
 
   @Column()
-  price: string;
+  price: number;
 
   setId(id: number) {
     this.id = id;
@@ -49,11 +49,20 @@ export class Product {
     return this.image;
   };
 
-  setPrice(price: string) {
+  setPrice(price: number) {
     this.price = price;
   }
 
-  getPrice(): string {
+  getPrice(): number {
     return this.price;
   };
+
+  static sumPricesByQuantities(products: Product[], productsInSession): number {
+    let total = 0;
+    for (let i = 0; i < products.length; i++) {
+      total =
+        total + products[i].getPrice() * productsInSession[products[i].getId()];
+    }
+    return total;
+  }
 }
