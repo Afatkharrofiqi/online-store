@@ -9,9 +9,9 @@ import {
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { UsersService } from '../user/user.service';
-import { UserValidator } from '../../validator/user.validator';
 import { User } from '@model/user.entity';
+import { UsersService } from '@service/user/user.service';
+import { UserValidator } from '@validator/validator/user.validator';
 
 @Controller('/auth')
 export class AuthController {

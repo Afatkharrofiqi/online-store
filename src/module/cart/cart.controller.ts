@@ -9,13 +9,13 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import { ProductsService } from '../product/product.service';
-import { UsersService } from '../user/user.service';
-import { OrdersService } from '../order/order.service';
 import { Response } from 'express';
 import { Product } from '@model/product.entity';
 import { Item } from '@model/item.entity';
 import { Order } from '@model/order.entity';
+import { ProductsService } from '@service/product/product.service';
+import { UsersService } from '@service/user/user.service';
+import { OrdersService } from '@service/order/order.service';
 
 @Controller('/cart')
 export class CartController {

@@ -12,7 +12,11 @@
     "baseUrl": "./",
     "paths": {
       "@common/*": ["src/common/*"],
-      "@model/*": ["src/model/*"]
+      "@model/*.entity": ["src/model/*.entity.ts"],
+      "@service/*.service": ["src/module/*.service.ts"],
+      "@controller/*.controller": ["src/module/*.controller.ts"],
+      "@module/*.module": ["src/module/*.module.ts"],
+      "@validator/*.validator": ["src/*.validator.ts"]
     },
     "incremental": true,
     "skipLibCheck": true,

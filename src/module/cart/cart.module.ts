@@ -4,9 +4,9 @@ import { Product } from '@model/product.entity';
 import { User } from '@model/user.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OrdersService } from '../order/order.service';
-import { ProductsService } from '../product/product.service';
-import { UsersService } from '../user/user.service';
+import { OrdersService } from '@service/order/order.service';
+import { ProductsService } from '@service/product/product.service';
+import { UsersService } from '@service/user/user.service';
 import { CartController } from './cart.controller';
 
 @Module({

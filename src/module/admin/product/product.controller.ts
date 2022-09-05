@@ -12,11 +12,11 @@ import {
   Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ProductsService } from '../../product/product.service';
-import { ProductValidator } from '../../../validator/product.validator';
 import * as fs from 'fs';
 import { Response } from 'express';
 import { Product } from '@model/product.entity';
+import { ProductValidator } from '@validator/validator/product.validator';
+import { ProductsService } from '@service/product/product.service';
 
 @Controller('/admin/products')
 export class ProductsController {
