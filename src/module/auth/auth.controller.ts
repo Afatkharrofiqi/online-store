@@ -9,13 +9,13 @@ import {
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { User } from '@model/user.entity';
-import { UsersService } from '@service/user/user.service';
-import { UserValidator } from '@validator/validator/user.validator';
+import { User } from '@model/user';
+import { UsersService } from '@service/user/user';
+import { UserValidator } from '@validator/user';
 
 @Controller('/auth')
 export class AuthController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @Get('/register')
   @Render('auth/register')

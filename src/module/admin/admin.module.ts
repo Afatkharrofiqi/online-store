@@ -1,8 +1,7 @@
-
-import { Product } from '@model/product.entity';
+import { Product } from '@model/product';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductsService } from '@service/product/product.service';
+import { ProductsService } from '@service/product/product';
 import { AdminController } from './admin.controller';
 import { ProductsController } from './product/product.controller';
 
@@ -11,4 +10,4 @@ import { ProductsController } from './product/product.controller';
   controllers: [AdminController, ProductsController],
   providers: [ProductsService],
 })
-export class AdminModule { }
+export class AdminModule {}

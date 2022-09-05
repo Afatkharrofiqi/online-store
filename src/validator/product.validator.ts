@@ -1,5 +1,4 @@
-
-import { Product } from '@model/product.entity';
+import { Product } from '@model/product';
 import validator from 'validator';
 
 export class ProductValidator {

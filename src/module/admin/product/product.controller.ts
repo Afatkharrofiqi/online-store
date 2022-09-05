@@ -14,13 +14,13 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs';
 import { Response } from 'express';
-import { Product } from '@model/product.entity';
-import { ProductValidator } from '@validator/validator/product.validator';
-import { ProductsService } from '@service/product/product.service';
+import { Product } from '@model/product';
+import { ProductValidator } from '@validator/product';
+import { ProductsService } from '@service/product/product';
 
 @Controller('/admin/products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) { }
+  constructor(private readonly productsService: ProductsService) {}
 
   @Get('/')
   @Render('admin/products/index')

@@ -1,8 +1,7 @@
-
-import { Order } from '@model/order.entity';
+import { Order } from '@model/order';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OrdersService } from '@service/order/order.service';
+import { OrdersService } from '@service/order/order';
 import { AccountController } from './account.controller';
 
 @Module({
@@ -10,4 +9,4 @@ import { AccountController } from './account.controller';
   controllers: [AccountController],
   providers: [OrdersService],
 })
-export class AccountModule { }
+export class AccountModule {}

@@ -10,12 +10,12 @@ import {
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { Product } from '@model/product.entity';
-import { Item } from '@model/item.entity';
-import { Order } from '@model/order.entity';
-import { ProductsService } from '@service/product/product.service';
-import { UsersService } from '@service/user/user.service';
-import { OrdersService } from '@service/order/order.service';
+import { Product } from '@model/product';
+import { Item } from '@model/item';
+import { Order } from '@model/order';
+import { ProductsService } from '@service/product/product';
+import { UsersService } from '@service/user/user';
+import { OrdersService } from '@service/order/order';
 
 @Controller('/cart')
 export class CartController {
@@ -23,7 +23,7 @@ export class CartController {
     private readonly productsService: ProductsService,
     private readonly usersService: UsersService,
     private readonly ordersService: OrdersService,
-  ) { }
+  ) {}
 
   @Get('/')
   @Render('cart/index')

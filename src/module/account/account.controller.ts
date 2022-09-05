@@ -1,9 +1,9 @@
 import { Controller, Get, Render, Req } from '@nestjs/common';
-import { OrdersService } from '@service/order/order.service';
+import { OrdersService } from '@service/order/order';
 
 @Controller('/account')
 export class AccountController {
-  constructor(private readonly ordersService: OrdersService) { }
+  constructor(private readonly ordersService: OrdersService) {}
 
   @Get('/orders')
   @Render('account/orders')

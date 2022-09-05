@@ -1,5 +1,4 @@
-
-import { User } from '@model/user.entity';
+import { User } from '@model/user';
 import validator from 'validator';
 
 export class UserValidator {
