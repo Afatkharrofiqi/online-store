@@ -8,20 +8,15 @@ import { OrderModule } from '@module/order/order';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsService } from '@service/product/product';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { typeOrmAyncConfig } from '@config/typeorm';
+import { getEnvPath } from '@helper/env';
 import { AppController } from './app.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'online_store',
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
+    ConfigModule.forRoot({ envFilePath: getEnvPath(), isGlobal: true }),
+    TypeOrmModule.forRootAsync(typeOrmAyncConfig),
     TypeOrmModule.forFeature([Product]),
     AdminModule,
     AuthModule,
@@ -30,6 +25,6 @@ import { AppController } from './app.controller';
     AccountModule,
   ],
   controllers: [AppController, ProductController],
-  providers: [ProductsService],
+  providers: [ProductsService, ConfigService],
 })
 export class AppModule {}

@@ -11,12 +11,13 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@common/*": ["src/common/*"],
       "@model/*": ["src/model/*.entity"],
       "@service/*": ["src/module/*.service"],
       "@controller/*": ["src/module/*.controller"],
       "@module/*": ["src/module/*.module"],
-      "@validator/*": ["src/validator/*.validator"]
+      "@validator/*": ["src/validator/*.validator"],
+      "@config/*": ["src/config/*.config"],
+      "@helper/*": ["src/common/helper/*.helper"]
     },
     "incremental": true,
     "skipLibCheck": true,
