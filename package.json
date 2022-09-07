@@ -35,10 +35,12 @@
   "lint-staged": {
     "*.+(ts|tsx)": [
       "yarn lint",
-      "yarn format"
+      "yarn format",
+      "git add"
     ],
     "*.+(json|md)": [
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ]
   },
   "dependencies": {
