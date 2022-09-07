@@ -1,5 +1,6 @@
+import { Item } from '@model/item';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Item } from './item.entity';
+
 @Entity()
 export class Product {
   @PrimaryGeneratedColumn()

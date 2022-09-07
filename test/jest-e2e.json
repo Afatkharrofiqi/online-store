@@ -10,7 +10,11 @@
     "^@model/(.*)$": ["<rootDir>/../src/model/$1.entity"],
     "^@service/(.*)$": ["<rootDir>/../src/module/$1.service"],
     "^@controller/(.*)$": ["<rootDir>/../src/module/$1.controller"],
-    "^@module/(.*)$": ["<rootDir>/../src/module/$1.module"],
+    "^@module/(.*)$": [
+      "<rootDir>/../src/config/$1.module",
+      "<rootDir>/../src/database/$1.module",
+      "<rootDir>/../src/module/$1.module"
+    ],
     "^@validator/(.*)$": ["<rootDir>/../src/validator/$1.validator"],
     "^@config/(.*)$": ["<rootDir>/../src/config/$1.config"],
     "^@helper/(.*)$": ["<rootDir>/../src/common/helper/$1.helper"]

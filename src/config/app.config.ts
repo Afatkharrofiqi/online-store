@@ -1,5 +1,3 @@
-import Package = require('../../package.json');
-
 const AppConfig = {
   /*
   |--------------------------------------------------------------------------
@@ -9,10 +7,7 @@ const AppConfig = {
   | This values are defined in the package.json.
   |
   */
-  name: Package.name,
-  author: Package.author,
-  description: Package.description,
-  version: Package.version,
+  name: process.env.APP_NAME,
 
   /*
   |--------------------------------------------------------------------------

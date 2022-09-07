@@ -1,3 +1,5 @@
+import { Item } from '@model/item';
+import { User } from '@model/user';
 import {
   Entity,
   Column,
@@ -6,8 +8,6 @@ import {
   OneToMany,
   CreateDateColumn,
 } from 'typeorm';
-import { User } from './user.entity';
-import { Item } from './item.entity';
 
 @Entity()
 export class Order {

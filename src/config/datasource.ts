@@ -1,4 +1,4 @@
+import DatabaseConfig from '@config/typeorm';
 import { DataSource } from 'typeorm';
-import DatabaseConfig from './typeorm.config';
 
 export default new DataSource(DatabaseConfig);

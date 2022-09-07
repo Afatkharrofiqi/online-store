@@ -1,5 +1,4 @@
 import { NestFactory } from '@nestjs/core';
-import { MainModule } from '@module/main';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as hbs from 'hbs';
@@ -7,6 +6,7 @@ import * as hbsUtils from 'hbs-utils';
 import * as session from 'express-session';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from '@nestjs/common';
+import { MainModule } from 'src/main.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(MainModule);
@@ -49,7 +49,7 @@ async function bootstrap() {
     }
   });
 
-  const logger = new Logger('bootstrap');
+  const logger = new Logger('Bootstrap');
   await app.listen(config.get('app.port'), () => {
     logger.log(
       `Server is listen on http://localhost:${config.get('app.port')}`,

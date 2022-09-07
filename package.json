@@ -118,6 +118,8 @@
         "<rootDir>/../src/module/$1.controller"
       ],
       "^@module/(.*)$": [
+        "<rootDir>/../src/config/$1.module",
+        "<rootDir>/../src/database/$1.module",
         "<rootDir>/../src/module/$1.module"
       ],
       "^@validator/(.*)$": [

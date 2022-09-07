@@ -15,8 +15,7 @@
       "@module/*": [
         "src/config/*.module",
         "src/database/*.module",
-        "src/module/*.module",
-        "src/*.module"
+        "src/module/*.module"
       ],
       "@service/*": ["src/module/*.service"],
       "@controller/*": ["src/module/*.controller"],
