@@ -1,4 +1,4 @@
-import Package from '../../package.json';
+import Package = require('../../package.json');
 
 const AppConfig = {
   /*
