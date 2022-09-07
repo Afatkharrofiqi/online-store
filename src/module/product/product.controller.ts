@@ -1,11 +1,11 @@
 import { Product } from '@model/product';
 import { Controller, Get, Render, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { ProductsService } from './product.service';
+import { ProductService } from './product.service';
 
 @Controller('products')
 export class ProductController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productService: ProductService) { }
 
   @Get('/')
   @Render('products/index')
@@ -13,7 +13,7 @@ export class ProductController {
     const viewData = [];
     viewData['title'] = 'Products - Online Store';
     viewData['subtitle'] = 'List of Products';
-    viewData['products'] = await this.productsService.findAll();
+    viewData['products'] = await this.productService.findAll();
     return {
       viewData,
     };
@@ -21,7 +21,7 @@ export class ProductController {
 
   @Get('/:id')
   async show(@Param() param: Product, @Res() response: Response) {
-    const product = await this.productsService.findOne(param.id);
+    const product = await this.productService.findOne(param.id);
     if (product === undefined) {
       return response.redirect('/products');
     }

@@ -4,7 +4,7 @@ import { Controller, Get, Render } from '@nestjs/common';
 export class AppController {
   @Get()
   @Render('index')
-  getHello() {
+  index() {
     const viewData = [];
     viewData['title'] = 'Home Page - Online Store';
     return {
@@ -23,5 +23,10 @@ export class AppController {
     return {
       viewData: viewData,
     };
+  }
+
+  @Get('/hello')
+  getHello() {
+    return "Hello World!";
   }
 }

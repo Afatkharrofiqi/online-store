@@ -16,18 +16,18 @@ import * as fs from 'fs';
 import { Response } from 'express';
 import { Product } from '@model/product';
 import { ProductValidator } from '@validator/product';
-import { ProductsService } from '@service/product/product';
+import { ProductService } from '@service/product/product';
 
 @Controller('/admin/products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productService: ProductService) { }
 
   @Get('/')
   @Render('admin/products/index')
   async index() {
     const viewData = [];
     viewData['title'] = 'Admin Page - Admin - Online Store';
-    viewData['products'] = await this.productsService.findAll();
+    viewData['products'] = await this.productService.findAll();
     return {
       viewData: viewData,
     };
@@ -59,14 +59,14 @@ export class ProductsController {
       newProduct.setDescription(body.description);
       newProduct.setPrice(body.price);
       newProduct.setImage(file.filename);
-      await this.productsService.createOrUpdate(newProduct);
+      await this.productService.createOrUpdate(newProduct);
     }
   }
 
   @Post(':id')
   @Redirect('/admin/products')
   remove(@Param('id') id: string) {
-    return this.productsService.remove(id);
+    return this.productService.remove(id);
   }
 
   @Get('/:id')
@@ -74,7 +74,7 @@ export class ProductsController {
   async edit(@Param('id') id: number) {
     const viewData = [];
     viewData['title'] = 'Admin Page - Edit Product - Online Store';
-    viewData['product'] = await this.productsService.findOne(id);
+    viewData['product'] = await this.productService.findOne(id);
     return {
       viewData: viewData,
     };
@@ -103,14 +103,14 @@ export class ProductsController {
       request.session.flashErrors = errors;
       return response.redirect('/admin/product/' + id);
     } else {
-      const product = await this.productsService.findOne(id);
+      const product = await this.productService.findOne(id);
       product.setName(body.name);
       product.setDescription(body.description);
       product.setPrice(body.price);
       if (file) {
         product.setImage(file.filename);
       }
-      await this.productsService.createOrUpdate(product);
+      await this.productService.createOrUpdate(product);
       return response.redirect('/admin/products/');
     }
   }

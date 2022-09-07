@@ -1,15 +1,7 @@
-import {
-  TypeOrmModuleAsyncOptions,
-  TypeOrmModuleOptions,
-} from '@nestjs/typeorm';
 import { env } from 'process';
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSourceOptions } from 'typeorm';
 
-export const typeOrmAyncConfig: TypeOrmModuleAsyncOptions = {
-  useFactory: async (): Promise<TypeOrmModuleOptions> => typeOrmConfig,
-};
-
-const typeOrmConfig = {
+const DatabaseConfig = {
   type: env.DB_TYPE,
   host: env.DB_HOST,
   port: parseInt(env.DB_PORT, 10),
@@ -19,6 +11,8 @@ const typeOrmConfig = {
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/../database/migration/*{.ts,.js}'],
   subscribers: [__dirname + '/../subscriber/*{.ts,.js}'],
+  seeds: [__dirname + '/../database/seeder/**/*{.ts,.js}'],
+  factories: [__dirname + '/../database/factory/**/*{.ts,.js}'],
   cli: {
     entityDir: __dirname + '/../model',
     migrationsDir: __dirname + '/../database/migration',
@@ -31,6 +25,4 @@ const typeOrmConfig = {
   logging: false,
 } as DataSourceOptions;
 
-const AppDataSource = new DataSource(typeOrmConfig);
-
-export default AppDataSource;
+export default DatabaseConfig;

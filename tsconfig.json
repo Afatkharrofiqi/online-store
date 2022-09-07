@@ -12,9 +12,13 @@
     "baseUrl": "./",
     "paths": {
       "@model/*": ["src/model/*.entity"],
+      "@module/*": [
+        "src/config/*.module",
+        "src/database/*.module",
+        "src/module/*.module"
+      ],
       "@service/*": ["src/module/*.service"],
       "@controller/*": ["src/module/*.controller"],
-      "@module/*": ["src/module/*.module"],
       "@validator/*": ["src/validator/*.validator"],
       "@config/*": ["src/config/*.config"],
       "@helper/*": ["src/common/helper/*.helper"]

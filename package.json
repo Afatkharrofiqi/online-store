@@ -10,6 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "start": "npx env-cmd nest start",
+    "dev": "yarn start:dev",
     "start:dev": "npx env-cmd nest start --watch",
     "start:debug": "npx env-cmd nest start --debug --watch",
     "start:prod": "npx env-cmd node dist/main",
@@ -19,7 +20,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "npx env-cmd typeorm-ts-node-esm -d src/config/typeorm.config.ts",
+    "typeorm": "npx env-cmd typeorm-ts-node-esm -d src/config/datasource.ts",
     "migration:show": "yarn typeorm migration:show",
     "migration:generate": "yarn typeorm migration:generate",
     "migration:create": "yarn typeorm migration:create",
@@ -27,8 +28,8 @@
     "migration:run": "yarn typeorm migration:run",
     "entity:create": "yarn typeorm entity:create",
     "subscriber:create": "yarn typeorm subscriber:create",
-    "seed:config": "yarn typeorm config -n src/config/typeorm.config.ts",
-    "seed:run": "yarn typeorm seed -n src/config/typeorm.config.ts",
+    "seed:config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js -n src/config/typeorm.config.ts config",
+    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js -n src/config/typeorm.config.ts seed",
     "db:refresh": "yarn typeorm schema:drop && npm run migration:run && npm run seed:run"
   },
   "lint-staged": {
@@ -56,9 +57,11 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "typeorm": "^0.3.9",
+    "typeorm-seeding": "^1.6.1",
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",

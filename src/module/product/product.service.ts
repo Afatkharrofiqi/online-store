@@ -4,29 +4,29 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 
 @Injectable()
-export class ProductsService {
+export class ProductService {
   constructor(
     @InjectRepository(Product)
-    private productsRepository: Repository<Product>,
-  ) {}
+    private productRepository: Repository<Product>,
+  ) { }
 
   findAll(): Promise<Product[]> {
-    return this.productsRepository.find();
+    return this.productRepository.find();
   }
 
   findOne(id: number): Promise<Product> {
-    return this.productsRepository.findOneBy({ id });
+    return this.productRepository.findOneBy({ id });
   }
 
   createOrUpdate(product: Product): Promise<Product> {
-    return this.productsRepository.save(product);
+    return this.productRepository.save(product);
   }
 
   async remove(id: string): Promise<void> {
-    await this.productsRepository.delete(id);
+    await this.productRepository.delete(id);
   }
 
   findByIds(ids: string[]): Promise<Product[]> {
-    return this.productsRepository.findBy({ id: In(ids) });
+    return this.productRepository.findBy({ id: In(ids) });
   }
 }

@@ -13,17 +13,17 @@ import { Response } from 'express';
 import { Product } from '@model/product';
 import { Item } from '@model/item';
 import { Order } from '@model/order';
-import { ProductsService } from '@service/product/product';
+import { ProductService } from '@service/product/product';
 import { UsersService } from '@service/user/user';
 import { OrdersService } from '@service/order/order';
 
 @Controller('/cart')
 export class CartController {
   constructor(
-    private readonly productsService: ProductsService,
+    private readonly productService: ProductService,
     private readonly usersService: UsersService,
     private readonly ordersService: OrdersService,
-  ) {}
+  ) { }
 
   @Get('/')
   @Render('cart/index')
@@ -32,7 +32,7 @@ export class CartController {
     let productsInCart: Product[] = null;
     const productsInSession = request.session.products;
     if (productsInSession) {
-      productsInCart = await this.productsService.findByIds(
+      productsInCart = await this.productService.findByIds(
         Object.keys(productsInSession),
       );
       total = Product.sumPricesByQuantities(productsInCart, productsInSession);
@@ -76,7 +76,7 @@ export class CartController {
 
     const user = await this.usersService.findOne(request.session.user.id);
     const productsInSession = request.session.products;
-    const productsInCart = await this.productsService.findByIds(
+    const productsInCart = await this.productService.findByIds(
       Object.keys(productsInSession),
     );
     let total = 0;
