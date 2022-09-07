@@ -15,7 +15,7 @@ import { UserValidator } from '@validator/user';
 
 @Controller('/auth')
 export class AuthController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @Get('/register')
   @Render('auth/register')

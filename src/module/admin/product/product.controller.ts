@@ -20,7 +20,7 @@ import { ProductService } from '@service/product/product';
 
 @Controller('/admin/products')
 export class ProductsController {
-  constructor(private readonly productService: ProductService) { }
+  constructor(private readonly productService: ProductService) {}
 
   @Get('/')
   @Render('admin/products/index')

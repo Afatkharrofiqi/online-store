@@ -1,11 +1,12 @@
-import { Module } from "@nestjs/common";
-import { AccountModule } from "./account/account.module";
-import { AdminModule } from "./admin/admin.module";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { AuthModule } from "./auth/auth.module";
-import { CartModule } from "./cart/cart.module";
-import { OrderModule } from "./order/order.module";
+import { Module } from '@nestjs/common';
+import { AuthModule } from '@module/auth/auth';
+import { AdminModule } from '@module/admin/admin';
+import { CartModule } from '@module/cart/cart';
+import { OrderModule } from '@module/order/order';
+import { AccountModule } from '@module/account/account';
+import { ProductModule } from '@module/product/product';
+import { AppController } from '@controller/app';
+import { AppService } from '@service/app';
 
 @Module({
   imports: [
@@ -14,8 +15,9 @@ import { OrderModule } from "./order/order.module";
     CartModule,
     OrderModule,
     AccountModule,
+    ProductModule,
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

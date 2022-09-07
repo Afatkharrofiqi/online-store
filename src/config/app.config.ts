@@ -1,3 +1,5 @@
+import Package from '../../package.json';
+
 const AppConfig = {
   /*
   |--------------------------------------------------------------------------
@@ -7,10 +9,10 @@ const AppConfig = {
   | This values are defined in the package.json.
   |
   */
-  name: require("../../package.json").name,
-  title: require("../../package.json").title,
-  description: require("../../package.json").description,
-  version: require("../../package.json").version,
+  name: Package.name,
+  author: Package.author,
+  description: Package.description,
+  version: Package.version,
 
   /*
   |--------------------------------------------------------------------------
@@ -18,11 +20,11 @@ const AppConfig = {
   |--------------------------------------------------------------------------
   |
   | This value define on witch port the application is available. Default is
-  | the standard port 8080
+  | the standard port 3000
   |
   */
 
   port: parseInt(process.env.PORT, 10) || 3000,
-}
+};
 
-export default AppConfig
+export default AppConfig;

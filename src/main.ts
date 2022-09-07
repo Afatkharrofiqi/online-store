@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { MainModule } from './main.module';
+import { MainModule } from '@module/main';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as hbs from 'hbs';
@@ -14,7 +14,9 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'src/views'));
   hbs.registerPartials(join(__dirname, '..', 'src/views/layouts'));
-  hbsUtils(hbs).registerWatchedPartials(join(__dirname, '..', 'src/views/layouts'));
+  hbsUtils(hbs).registerWatchedPartials(
+    join(__dirname, '..', 'src/views/layouts'),
+  );
   app.setViewEngine('hbs');
   app.use(
     session({
@@ -47,9 +49,11 @@ async function bootstrap() {
     }
   });
 
-  const logger = new Logger("bootstrap")
-  await app.listen(config.get("app.port"), () => {
-    logger.log(`Server is listen on http://localhost:${config.get("app.port")}`)
-  })
+  const logger = new Logger('bootstrap');
+  await app.listen(config.get('app.port'), () => {
+    logger.log(
+      `Server is listen on http://localhost:${config.get('app.port')}`,
+    );
+  });
 }
 bootstrap();

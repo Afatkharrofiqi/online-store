@@ -1,11 +1,11 @@
 import { Product } from '@model/product';
 import { Controller, Get, Render, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { ProductService } from './product.service';
+import { ProductService } from '@service/product/product';
 
 @Controller('products')
 export class ProductController {
-  constructor(private readonly productService: ProductService) { }
+  constructor(private readonly productService: ProductService) {}
 
   @Get('/')
   @Render('products/index')

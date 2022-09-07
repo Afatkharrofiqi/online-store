@@ -23,7 +23,7 @@ export class CartController {
     private readonly productService: ProductService,
     private readonly usersService: UsersService,
     private readonly ordersService: OrdersService,
-  ) { }
+  ) {}
 
   @Get('/')
   @Render('cart/index')

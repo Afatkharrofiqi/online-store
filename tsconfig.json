@@ -15,7 +15,8 @@
       "@module/*": [
         "src/config/*.module",
         "src/database/*.module",
-        "src/module/*.module"
+        "src/module/*.module",
+        "src/*.module"
       ],
       "@service/*": ["src/module/*.service"],
       "@controller/*": ["src/module/*.controller"],
@@ -29,6 +30,7 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true
   }
 }
